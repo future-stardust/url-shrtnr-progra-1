@@ -20,6 +20,8 @@ import org.reactivestreams.Publisher;
  */
 @Singleton
 public class AuthenticationProviderUserPassword implements AuthenticationProvider {
+  private static final String DEFAULT_LOGIN = "sherlock";
+  private static final String DEFAULT_PASSWORD = "password";
 
   @Override
   public Publisher<AuthenticationResponse> authenticate(
@@ -29,8 +31,8 @@ public class AuthenticationProviderUserPassword implements AuthenticationProvide
     // TODO Here you need to implement an actual authentication (ensure that the user is registered
     //  and password is OK)
     return Flowable.create(emitter -> {
-      if (authenticationRequest.getIdentity().equals("sherlock")
-          && authenticationRequest.getSecret().equals("password")) {
+      if (authenticationRequest.getIdentity().equals(DEFAULT_LOGIN)
+          && authenticationRequest.getSecret().equals(DEFAULT_PASSWORD)) {
         emitter
           .onNext(new UserDetails((String) authenticationRequest.getIdentity(), new ArrayList<>()));
         emitter.onComplete();
