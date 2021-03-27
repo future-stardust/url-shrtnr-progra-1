@@ -10,10 +10,11 @@ import io.micronaut.security.rules.SecurityRule;
 /**
  * REST API controller that provides logic for Micronaut framework.
  */
+
 @Secured(SecurityRule.IS_AUTHENTICATED)
 @Controller
 public class ApiController {
-
+  /**comi**/
   record ExampleClass(String first, String second) {}
 
   @Get(value = "/hello", produces = MediaType.APPLICATION_JSON)
